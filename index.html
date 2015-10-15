@@ -8,28 +8,45 @@
   </head>
   <body>
 
-    <section id="dealer">
-      <h2>Dealer</h2>
-      <div id="dealer-bank"></div>
-      <div id="dealer-value"></div>
-      <div class="dealer-hand" id="d-card-1"></div>
-      <div class="dealer-hand" id="d-card-2"></div>
+      <h2 id="d">Dealer</h2>
+    <section id="dealer-value">Dealer hand value: 0</section>
+    <section id="dealer-hand">
+      <!-- <div class="dealer-hand cards" id="d-card-0"></div>
+      <div class="dealer-hand cards" id="d-card-0"></div> -->
     </section>
 
     <section id="betting">
-      <div id="current-bet"></div>
-      <div id="pot"></div>
-      <button id="hit">hit</div>
-      <button id="stand">stand</div>
+      <div class="bets" id="dealer-money">
+        <div id="dealer-bank">Dealer Bank: 100</div>
+      </div>
+
+      <div class="bets" id="pot">
+        <div id="current-pot">Current pot: 0</div>
+        <div id="dealer-bet">Dealer Bet: 0</div>
+        <div id="player-bet">Player Bet: 0</div>
+      </div>
+
+      <div class="bets" id="player-money">
+        <div id="player-bank">Player Bank: 100</div>
+        <input id="bet-input"></input>
+        <button id="bet-button">bet</button>
+      </div>
     </section>
 
-    <section id="player">
-      <div id="player-bank"></div>
-      <div id="player-value"></div>
-      <div class="player1-hand" id="p1-card-1"></div>
-      <div class="player1-hand" id="p1-card-2"></div>
-      <h2>Player</h2>
+    <section id="moves">
+      <div>
+        <button id="shuffle">shuffle</button>
+        <button id="hit">hit</button>
+        <button id="stand">stand</button>
+      </div>
     </section>
+
+    <section id="player-hand">
+      <!-- <div class="player-hand cards" id="p-card-0"></div>
+      <div class="player-hand cards" id="p-card-1"></div> -->
+    </section>
+    <section id="player-value">Player hand value: 0</section>
+    <h2 id="p">Player</h2>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="js/assets.js"></script>

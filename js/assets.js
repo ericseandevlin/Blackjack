@@ -1,6 +1,18 @@
 console.log('assets working');
+
+var shuffledCards = [];
+
+var testCards = [
+{ name: 'Ace', value : 11, suit: 'clubs', img: '<img src="images/Playing Cards/PNG-cards-1.3/ace_of_spades2.png">' },
+{ name: 'Ace', value : 11, suit: 'clubs', img: '<img src="images/Playing Cards/PNG-cards-1.3/ace_of_spades2.png">' },
+{ name: 'Ace', value : 11, suit: 'clubs', img: '<img src="images/Playing Cards/PNG-cards-1.3/ace_of_spades2.png">' },
+{ name: 'Ace', value : 11, suit: 'clubs', img: '<img src="images/Playing Cards/PNG-cards-1.3/ace_of_spades2.png">' },
+{ name: 'Ace', value : 11, suit: 'clubs', img: '<img src="images/Playing Cards/PNG-cards-1.3/ace_of_spades2.png">' },
+{ name: 'Ace', value : 11, suit: 'clubs', img: '<img src="images/Playing Cards/PNG-cards-1.3/ace_of_spades2.png">' }
+];
+
 var deckOfCards = [
- { name: 'Ace', value : 1, suit: 'clubs' },
+ { name: 'Ace', value : 11, suit: 'clubs' },
  { name: '2', value : 2, suit: 'clubs' },
  { name: '3', value: 3, suit: 'clubs' },
  { name: '4', value: 4 , suit: 'clubs' },
@@ -13,7 +25,7 @@ var deckOfCards = [
  { name: 'Jack', value: 10, suit: 'clubs' },
  { name: 'Queen', value: 10, suit: 'clubs' },
  { name: 'King', value: 10, suit: 'clubs' },
- { name: 'Ace', value : 1, suit: 'diamonds' },
+ { name: 'Ace', value : 11, suit: 'diamonds' },
  { name: '2', value : 2, suit: 'diamonds' },
  { name: '3', value: 3, suit: 'diamonds' },
  { name: '4', value: 4 , suit: 'diamonds' },
@@ -26,7 +38,7 @@ var deckOfCards = [
  { name: 'Jack', value: 10, suit: 'diamonds' },
  { name: 'Queen', value: 10, suit: 'diamonds' },
  { name: 'King', value: 10, suit: 'diamonds' },
- { name: 'Ace', value : 1, suit: 'hearts' },
+ { name: 'Ace', value : 11, suit: 'hearts' },
  { name: '2', value : 2, suit: 'hearts' },
  { name: '3', value: 3, suit: 'hearts' },
  { name: '4', value: 4 , suit: 'hearts' },
@@ -39,17 +51,17 @@ var deckOfCards = [
  { name: 'Jack', value: 10, suit: 'hearts' },
  { name: 'Queen', value: 10, suit: 'hearts' },
  { name: 'King', value: 10, suit: 'hearts' },
- { name: 'Ace', value : 1, suit: 'diamonds' },
- { name: '2', value : 2, suit: 'diamonds' },
- { name: '3', value: 3, suit: 'diamonds' },
- { name: '4', value: 4 , suit: 'diamonds' },
- { name: '5', value: 5, suit: 'diamonds' },
- { name: '6', value: 6, suit: 'diamonds' },
- { name: '7', value: 7, suit: 'diamonds' },
- { name: '8', value: 8, suit: 'diamonds' },
- { name: '9', value: 9, suit: 'diamonds' },
- { name: '10', value: 10, suit: 'diamonds' },
- { name: 'Jack', value: 10, suit: 'diamonds' },
- { name: 'Queen', value: 10, suit: 'diamonds' },
- { name: 'King', value: 10, suit: 'diamonds' }
+ { name: 'Ace', value : 11, suit: 'spades' },
+ { name: '2', value : 2, suit: 'spades' },
+ { name: '3', value: 3, suit: 'spades' },
+ { name: '4', value: 4 , suit: 'spades' },
+ { name: '5', value: 5, suit: 'spades' },
+ { name: '6', value: 6, suit: 'spades' },
+ { name: '7', value: 7, suit: 'spades' },
+ { name: '8', value: 8, suit: 'spades' },
+ { name: '9', value: 9, suit: 'spades' },
+ { name: '10', value: 10, suit: 'spades' },
+ { name: 'Jack', value: 10, suit: 'spades' },
+ { name: 'Queen', value: 10, suit: 'spades' },
+ { name: 'King', value: 10, suit: 'spades' }
 ];
