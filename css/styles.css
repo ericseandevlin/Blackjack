@@ -2,43 +2,51 @@ body {
   background-color: rgb(53, 103, 54);
   text-align: center;
   height: 400px;
+  color: rgb(214, 214, 214);
 }
-
 #dealer-hand {
   background-color: rgba(0, 0, 0, 0.22);
   margin: 5px;
   height: 40%
 }
-
 #betting {
   background-color: rgba(0, 0, 0, 0.22);
   margin: 5px;
   height: 20%;
   display: block;
 }
-
 #player-hand {
   background-color: rgba(0, 0, 0, 0.22);
   margin: 5px;
   height: 40%;
-
 }
-
 #d {
-  vertical-align: text-top;
+  /*vertical-align: text-top;*/
 }
-
 #p {
-  vertical-align: text-bottom;
+  /*vertical-align: text-bottom;*/
 }
-
+.dealer {
+  display: inline-block;
+}
+.player {
+  display: inline-block;
+}
+.status-container {
+  background-color: rgba(0, 0, 0, 0.22);
+}
+.status {
+  display: inline;
+  vertical-align: middle;
+  margin: 5px;
+  background-color: rgba(0, 0, 0, 0.22);
+}
 .bets {
   position: relative;
   display: inline-block;
   width: 30%;
   vertical-align: middle;
 }
-
 .cards {
   background-color: rgba(0, 0, 0, 0.22);
   position: relative;
@@ -48,7 +56,6 @@ body {
   width: 100px;
   margin: 5px;
 }
-
 .cards img {
   position: relative;
   width: 100%;

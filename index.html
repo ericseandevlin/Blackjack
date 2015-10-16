@@ -8,8 +8,14 @@
   </head>
   <body>
 
-      <h2 id="d">Dealer</h2>
-    <section id="dealer-value">Dealer hand value: 0</section>
+    <div class="status-container">
+      <h2 class="status" id="d">Dealer</h2><h2 class="status" id="d-status"></h2>
+    </div>
+
+    <section class="dealer">
+      <div class="dealer">Dealer hand value:</div>
+      <div class="dealer" id="dealer-value">0</div>
+    </section>
     <section id="dealer-hand">
       <!-- <div class="dealer-hand cards" id="d-card-0"></div>
       <div class="dealer-hand cards" id="d-card-0"></div> -->
@@ -35,7 +41,9 @@
 
     <section id="moves">
       <div>
+        <button id="start">start</button>
         <button id="shuffle">shuffle</button>
+        <button id="deal">deal</button>
         <button id="hit">hit</button>
         <button id="stand">stand</button>
       </div>
@@ -45,8 +53,14 @@
       <!-- <div class="player-hand cards" id="p-card-0"></div>
       <div class="player-hand cards" id="p-card-1"></div> -->
     </section>
-    <section id="player-value">Player hand value: 0</section>
-    <h2 id="p">Player</h2>
+    <section class="player">
+      <div class="player">Player hand value:</div>
+      <div class="player" id="player-value">0</div>
+    </section>
+
+    <div class="status-container">
+      <h2 class="status" id="p">Player</h2><h2 class="status" id="p-status"></h2>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="js/assets.js"></script>
