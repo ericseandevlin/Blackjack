@@ -84,7 +84,10 @@ $shuffle.click(function (event){
     for(var j, x, i = a.length; i; j = Math.floor(Math.random() * i), x = a[--i], a[i] = a[j], a[j] = x);
     return a;
   };
-  shuffledDeck = shuffle(deckOfCards);
+  //shuffledDeck = deckOfCards.slice(0);
+  shuffledDeck = deckOfCards.slice(0);
+  shuffle(shuffledDeck);
+  console.log('shuffled deck length = ' + shuffledDeck.length);
   // hide shuffle button show deal button
   $deal.css("visibility", "visible");
   $shuffle.css("visibility", "hidden");
@@ -172,9 +175,6 @@ $hit.click(function (event){
   dealPlay = false;
   hit(playerHand, playVal, playerValue);
   checkStatus(playVal, playerValue, playAces, playerStatus, playStat);
-  // hide deal button, show hit and stand button
-  //$hit.css("visibility", "visible");
-  //$stand.css("visibility", "visible");
   $deal.css("visibility", "hidden");
 });
 
