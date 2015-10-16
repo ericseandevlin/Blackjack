@@ -1,20 +1,18 @@
 console.log('apps working');
 
 // dealer section
-//var $dealerHand = $('.dealer-hand');
 var dealerHand = document.getElementById('dealer-hand');
 var dealerValue = document.getElementById('dealer-value');
 var dealerStatus = document.getElementById('d-status');
 
 // betting section
-var $dealerBank = $('#dealer-bank');
-var $playerBank = $('#player-bank');
-var $pot = $('#pot');
-var $playerBet = $('#player-bet');
-var $dealerBet = $('#dealer-bet');
+var dealerBank = document.getElementById('dealer-bank');
+var playerBank = document.getElementById('player-bank');
+var pot = document.getElementById('pot');
+var playerBet = document.getElementById('player-bet');
+var dealerBet = document.getElementById('dealer-bet');
 
 // player section
-//var $playerHand = $('.player-hand');
 var playerHand = document.getElementById('player-hand');
 var playerValue = document.getElementById('player-value');
 var playerStatus = document.getElementById('p-status');
@@ -46,12 +44,13 @@ function clear(persHand, persValue, persStatus, persStat) {
   persValue.innerHTML = 0;
   dealVal = 0;
   playVal = 0;
-  console.log(dealVal, playVal);
+  //console.log(dealVal, playVal);
   persStatus.innerHTML = '';
   persStat = '';
   dealAces = 0;
   playAces = 0;
 };
+
 
 function start() {
   // hide start button, show shuffle button
@@ -63,7 +62,7 @@ function start() {
   clear(playerHand, playerValue, playerStatus, playStat);
   clear(dealerHand, dealerValue, dealerStatus, dealStat);
   shuffledDeck = [];
-  console.log('shuffled deck length = ' + shuffledDeck.length);
+  //console.log('shuffled deck length = ' + shuffledDeck.length);
   dealPlay = true;
 };
 start();
@@ -73,9 +72,21 @@ $start.click(function (event){
   start();
 });
 
+//calculates pot
+function potCalc () {
+  console.log("adding up pot!");
+  console.log('dealer bet ' + dealerBet);
+  console.log('player bet ' + playerBet);
+  pot = playerBet.innter + dealerBet;
+  console.log('pot is ' + pot);
+};
+
 // takes input, removes amout from bank and into pot
 function bet() {
-
+  console.log('betting!');
+  playerBet.innerHTML = 10;
+  dealerBet.innerHTML = 10;
+  potCalc();
 };
 
 // click shuffle to randomize the deckOfCards
@@ -87,14 +98,13 @@ $shuffle.click(function (event){
   //shuffledDeck = deckOfCards.slice(0);
   shuffledDeck = deckOfCards.slice(0);
   shuffle(shuffledDeck);
-  console.log('shuffled deck length = ' + shuffledDeck.length);
+  //onsole.log('shuffled deck length = ' + shuffledDeck.length);
   // hide shuffle button show deal button
   $deal.css("visibility", "visible");
   $shuffle.css("visibility", "hidden");
 });
 
 // deals a card and adds the value to the person's hand total
-
 function hit(personHand, persVal, personValue) {
   var newCard = document.createElement('div');
   newCard.setAttribute('class', 'cards');
@@ -116,7 +126,7 @@ function hit(personHand, persVal, personValue) {
       console.log('dealer Aces = ' + dealAces);
     }
   }
-};
+}; //end hit
 
 // initial deal button
 $deal.click(function (event){
@@ -127,28 +137,24 @@ $deal.click(function (event){
   $hit.css("visibility", "visible");
   $stand.css("visibility", "visible");
   $deal.css("visibility", "hidden");
-  checkStatus(playVal, playerValue, playAces, playerStatus, playStat);
+  checkStatus(playVal, playerValue, playAces, playerStatus, playStat, playerBank);
 });
 
 // calculates hand. checks if 21, or over 21
-function checkStatus(persVal, persValue, persAces, persStatus, persStat) {
+function checkStatus(persVal, persValue, persAces, persStatus, persStat, persBank) {
+  console.log('checking status');
   if (persVal === 21) {
     if (dealPlay === true) {
-      persStatus.innerHTML = 'Blackjack!';
+      persStatus.innerHTML = ' got Blackjack!';
       console.log("blackjack!");
-      persStat = 'win';
-      $start.css("visibility", "visible");
-      $hit.css("visibility", "hidden");
-      $stand.css("visibility", "hidden");
+      persStat = 'blackjack';
       dealPlay = false;
-    } else {
-      persStatus.innerHTML = ' Wins!';
-      persStat = 'win';
-      $start.css("visibility", "visible");
-      $hit.css("visibility", "hidden");
-      $stand.css("visibility", "hidden");
+      payout(persBank, persStat);
+    // } else {
+    //   persStat = 'win';
     }
   } else if (persVal > 21) {
+    // soft Aces
     if (persAces > 0) {
       console.log(persAces);
       persVal = persVal -10;
@@ -157,50 +163,94 @@ function checkStatus(persVal, persValue, persAces, persStatus, persStat) {
       console.log('play aces before ' + persAces);
       persAces = persAces - 1;
       console.log('play aces after - 1 ' + persAces);
-      checkStatus(persVal, persValue, persAces, persStatus, persStat);
+      checkStatus(persVal, persValue, persAces, persStatus, persStat, persBank);
     } else {
-      persStatus.innerHTML = ' Busts!';
-      persStat = 'bust';
-      $start.css("visibility", "visible");
-      $hit.css("visibility", "hidden");
-      $stand.css("visibility", "hidden");
+      if (persStat === playStat) {
+        persStatus.innerHTML = ' Busts!';
+        persStat = 'bust';
+        $hit.css("visibility", "hidden");
+        $stand.css("visibility", "hidden");
+        //dealerAI();
+        payout(dealerBank, dealStat);
+      } else {
+        persStatus.innerHTML = ' Busts!';
+        persStat = 'bust';
+        payout(playerBank, playStat);
+      }
     }
-  } else if (persVal === dealVal && persVal >= 17) {
-      persStat = 'stand';
-      persStatus.innerHTML = ' Stands';
   }
-};
+}; // end checkStatus
 
+// hit button for the player
 $hit.click(function (event){
   dealPlay = false;
   hit(playerHand, playVal, playerValue);
-  checkStatus(playVal, playerValue, playAces, playerStatus, playStat);
+  checkStatus(playVal, playerValue, playAces, playerStatus, playStat, playerBank);
   $deal.css("visibility", "hidden");
 });
 
-// onclick moves onto compare()
-function stand(person) {
-  $hit.css("visibility", "hidden");
-  //if dealer();
-};
-
-$stand.click(function (event){
-
-});
-
 // dealer AI hits unti 17 then stands
-function dealer() {
-  // check status
- checkStatus(persVal, persAces, persStatus, persStat)
- // if status clear
-};
+function dealerAI() {
+  if ( dealVal > 17 ) {
+    console.log('dealer checking for Blackjack');
+    checkStatus(dealVal, dealerValue, dealAces, dealerStatus, dealStat, dealerBank);
+    if ((dealStat != 'blackjack') && (dealStat != 'bust')) {
+      dealerStatus.innerHTML = ' Stands.'
+      dealStat = 'stand';
+      compare();
+    }
+  } else {
+      console.log('dealer hits');
+      hit(dealerHand, dealVal, dealerValue);
+      dealerAI();
+  }
+}; // end dealer AI
+
+// stand
+$stand.click(function (event){
+  playerStatus.innerHTML = ' Stands.';
+  $hit.css("visibility", "hidden");
+  $stand.css("visibility", "hidden");
+  dealPlay = true;
+  dealerAI();
+}); // end stand
 
 // compares dealer and player hands determines win
 function compare() {
-
-};
+ console.log("comparing!");
+ if (dealVal === playVal) {
+   dealerStatus = ' Push';
+   playerStatus = ' Push';
+   payout(playerBank, 'push');
+ } else if ( playVal > dealVal ) {
+   playerStatus.innerHTML = ' Wins!';
+   playerStatus = 'wins';
+   dealerStatus = 'bust';
+   payout(playerBank, playStat);
+ } else {
+   dealerStatus.innerHTML = ' Wins!';
+   playerStatus = 'bust';
+   dealerStatus = 'win';
+   payout(dealerBank, dealStat);
+ }
+}; // end compare
 
 // distributes from pot according to win, asks for restart
-function payout() {
-
-};
+function payout(persBank, persStat) {
+  console.log('paying out finally');
+  if (persStat === ' Push') {
+    dealerBank = dealerBank + dealerBet;
+    playerBank = playerBank + playerBet;
+    dealerBet = 0;
+    playerBet = 0;
+    potCalc();
+  } else {
+    persBank = persBank + pot;
+    dealerBet = 0;
+    playerBet = 0;
+    potCalc();
+  }
+  $start.css("visibility", "visible");
+  $hit.css("visibility", "hidden");
+  $stand.css("visibility", "hidden");
+}; // end of payout

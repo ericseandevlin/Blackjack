@@ -39,7 +39,7 @@ body {
   display: inline;
   vertical-align: middle;
   margin: 5px;
-  background-color: rgba(0, 0, 0, 0.22);
+  /*background-color: rgba(0, 0, 0, 0.22);*/
 }
 .bets {
   position: relative;
