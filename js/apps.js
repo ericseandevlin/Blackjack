@@ -43,8 +43,8 @@ var dealBack = true;
 var playBet = 0;
 var dealBet = 0;
 var popo = 0;
-var playBank = 100;
-var dealBank = 100;
+var playBank = 1000;
+var dealBank = 1000;
 
 ///////////////////////////////////
 /////   FUNCTIONS   ///////////////
