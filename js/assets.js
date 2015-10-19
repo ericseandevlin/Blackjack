@@ -2,6 +2,8 @@ console.log('assets working');
 
 var shuffledDeck = [];
 
+var cardBack = { nam: 'Back', val : 0, suit: 'none', img: '<img src="images/back.png">' };
+
 var deckOfCards = [
  { nam: 'Ace', val : 11, suit: 'clubs', img: '<img src="images/ac.png">' },
  { nam: '2', val : 2, suit: 'clubs', img: '<img src="images/2c.png">' },

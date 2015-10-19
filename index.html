@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <link href='https://fonts.googleapis.com/css?family=Cinzel+Decorative:900|Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <meta charset="utf-8">
@@ -14,11 +15,10 @@
 
     <section class="dealer">
       <div class="dealer">Dealer hand value:</div>
-      <div class="dealer" id="dealer-value">0</div>
+      <div class="dealer value" id="dealer-value">0</div>
     </section>
     <section id="dealer-hand">
-      <!-- <div class="dealer-hand cards" id="d-card-0"></div>
-      <div class="dealer-hand cards" id="d-card-0"></div> -->
+
     </section>
 
     <section id="betting">
@@ -27,22 +27,33 @@
       </div>
 
       <div class="bets" id="pot">
-        <div id="current-pot">Current pot: 0</div>
-        <div id="dealer-bet">Dealer Bet: 0</div>
-        <div id="player-bet">Player Bet: 0</div>
+        <div class="betting-line">
+          <div class="betting-line">Dealer Bet: </div><div class="betting-line" id="dealer-bet">0</div>
+        </div>
+        <br>
+        <div class="betting-line">
+          <div class="betting-line current">Pot: </div><div class="betting-line current" id="current-pot-value">0</div>
+        </div>
+        <br>
+        <div class="betting-line">
+          <div class="betting-line">Player Bet: </div><div class="betting-line" id="player-bet">0</div>
+        </div>
       </div>
 
       <div class="bets" id="player-money">
         <div id="player-bank">Player Bank: 100</div>
-        <input id="bet-input"></input>
-        <button id="bet-button">bet</button>
+        <button class="bet-button" id="bet-1">Bet 1</button>
+        <button class="bet-button" id="bet-5">Bet 5</button>
+        <button class="bet-button" id="bet-25">Bet 25</button>
+        <button class="bet-button" id="bet-100">Bet 100</button>
+        <button class="bet-button" id="bet-confirm">Confirm Bet</button>
       </div>
     </section>
 
     <section id="moves">
       <div>
         <button id="start">start</button>
-        <button id="shuffle">shuffle</button>
+        <!-- <button id="shuffle">shuffle</button> -->
         <button id="deal">deal</button>
         <button id="hit">hit</button>
         <button id="stand">stand</button>
@@ -55,7 +66,7 @@
     </section>
     <section class="player">
       <div class="player">Player hand value:</div>
-      <div class="player" id="player-value">0</div>
+      <div class="player value" id="player-value">0</div>
     </section>
 
     <div class="status-container">
