@@ -69,13 +69,6 @@ function clear(persHand, persValue, persStat) {
 };
 
 function deal() {
-  //$shuffle.css("visibility", "visible");
-  //$start.css("visibility", "hidden");
-  // clear(playerHand, playerValue, playStat);
-  // clear(dealerHand, dealerValue, dealStat);
-  // shuffledDeck = [];
-  // dealPlay = true;
-
   // shuffle
   var shuffle = function(a) {
     for(var j, x, i = a.length; i; j = Math.floor(Math.random() * i), x = a[--i], a[i] = a[j], a[j] = x);
@@ -83,9 +76,6 @@ function deal() {
   };
   shuffledDeck = deckOfCards.slice(0);
   shuffle(shuffledDeck);
-  //$deal.css("visibility", "visible");
-  //$shuffle.css("visibility", "hidden");
-
   // deal
   hit(playerHand, playVal, playerValue);
   hit(playerHand, playVal, playerValue);
@@ -96,37 +86,11 @@ function deal() {
   dealerHand.appendChild(newCard);
   newCard.innerHTML = cardBack.img;
   hit(dealerHand, dealVal, dealerValue);
-  // $hit.css("visibility", "visible");
-  // $stand.css("visibility", "visible");
-  // $deal.css("visibility", "hidden");
   checkStatus(player, playVal, playerValue, playAces, playerStatus, playStat, playerBank);
   $hit.css("visibility", "visible");
   $stand.css("visibility", "visible");
   $deal.css("visibility", "hidden");
-}
-// function start() {
-//   // hide start button, show shuffle button
-//   $shuffle.css("visibility", "visible");
-//   $start.css("visibility", "hidden");
-//   $hit.css("visibility", "hidden");
-//   $stand.css("visibility", "hidden");
-//   $deal.css("visibility", "hidden");
-//   clear(playerHand, playerValue, playStat);
-//   clear(dealerHand, dealerValue, dealStat);
-//   shuffledDeck = [];
-//   //console.log('shuffled deck length = ' + shuffledDeck.length);
-//   dealPlay = true;
-// };
-// start();
-
-//calculates pot
-// function potCalc () {
-//   console.log("adding up pot!");
-//   console.log('dealer bet ' + dealerBet);
-//   console.log('player bet ' + playerBet);
-//   pot = playerBet.innter + dealerBet;
-//   console.log('pot is ' + pot);
-// };
+}; //end deal ()
 
 // takes input, removes amout from bank and into pot
 function bet(num) {
@@ -343,10 +307,6 @@ function payout(person, persBank, personBank, persStat) {
     //potCalc();
   }
   $start.css("visibility", "visible");
-  // $bet5.css("visibility", "visible");
-  // $bet25.css("visibility", "visible");
-  // $bet100.css("visibility", "visible");
-  // $betConfirm.css("visibility", "visible");
   $hit.css("visibility", "hidden");
   $stand.css("visibility", "hidden");
 }; // end of payout
@@ -397,18 +357,6 @@ $betConfirm.click(function (event){
   $bet100.css("visibility", "hidden");
   $betConfirm.css("visibility", "hidden");
 });
-
-// click shuffle to randomize the deckOfCards
-// $shuffle.click(function (event){
-//   var shuffle = function(a) {
-//     for(var j, x, i = a.length; i; j = Math.floor(Math.random() * i), x = a[--i], a[i] = a[j], a[j] = x);
-//     return a;
-//   };
-//   shuffledDeck = deckOfCards.slice(0);
-//   shuffle(shuffledDeck);
-//   $deal.css("visibility", "visible");
-//   $shuffle.css("visibility", "hidden");
-// });
 
 // initial deal button
 $deal.click(function (event){
