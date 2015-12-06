@@ -1,2 +1,5 @@
 # Project1_Blackjack
-Blackjack game
+
+
+A Blackjack simulator game using Javascript, CSS, HTML
+
